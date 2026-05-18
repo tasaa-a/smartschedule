@@ -8,7 +8,7 @@
 - Buka folder `C:\laragon\www\smartschedule` di VS Code
 - Buka terminal (Ctrl + `)
 
-## 3. Jalankan Perintah di Terminal
+## 3. Jalankan Perintah ini di Terminal
 ```bash
 composer install
 npm install
@@ -18,8 +18,8 @@ php artisan key:generate
 
 4. Buat Database
 
-· Buka http://localhost/phpmyadmin
-· Buat database: smartschedule_db
+- Buka http://localhost/phpmyadmin
+- Buat database: smartschedule_db
 
 5. Migrasi & Seeder
 
@@ -40,9 +40,7 @@ php artisan serve
 ```
 
 8. Login
+- Buka http://127.0.0.1:8000
+- Email: admin@smartschedule.com
+- Password: password123
 
-· Buka http://127.0.0.1:8000
-· Email: admin@smartschedule.com
-· Password: password123
-
-```
