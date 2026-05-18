@@ -2,13 +2,13 @@
 
 ## 1. Download & Ekstrak
 - Download ZIP dari https://github.com/tasaa-a/smartschedule
-- Ekstrak ke `C:\laragon\www\smartschedule`
+- Ekstrak ke `C:\laragon\www`
 
 ## 2. Buka di VS Code
 - Buka folder `C:\laragon\www\smartschedule` di VS Code
-- Buka terminal (Ctrl + `)
+- Buka terminal VS Code
 
-## 3. Jalankan Perintah ini di Terminal
+## 3. Jalankan Perintah ini di Terminal VS Code
 ```bash
 composer install
 npm install
@@ -17,24 +17,20 @@ php artisan key:generate
 ```
 
 4. Buat Database
-
 - Buka http://localhost/phpmyadmin
 - Buat database: smartschedule_db
 
 5. Migrasi & Seeder
-
 ```bash
 php artisan migrate --seed
 ```
 
 6. Compile CSS/JS
-
 ```bash
 npm run build
 ```
 
 7. Jalankan Server
-
 ```bash
 php artisan serve
 ```
