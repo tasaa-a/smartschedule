@@ -1,4 +1,4 @@
-# SmartSchedule - Cara Menjalankan
+# Cara Menjalankan Project Smartschedule
 
 ## 1. Download & Ekstrak
 - Download ZIP dari https://github.com/tasaa-a/smartschedule
