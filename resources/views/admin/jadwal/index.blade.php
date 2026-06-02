@@ -56,19 +56,15 @@
                                 <td class="border px-4 py-2">{{ $group['guru']->nama }}</td>
                                 <td class="border px-4 py-2 text-center">
                                     <div class="flex items-center justify-center gap-2">
-                                        <!-- Tombol Edit -->
                                         <a href="{{ route('admin.jadwal.editGroup', ['kelas_id' => $selectedKelas, 'mapel_id' => $group['mata_pelajaran']->id]) }}" 
-                                           class="text-blue-500 hover:text-blue-700">
+                                           class="text-blue-500 hover:text-blue-700" title="Edit">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        
-                                        <!-- Tombol Hapus -->
                                         <form action="{{ route('admin.jadwal.destroyGroup', ['kelas_id' => $selectedKelas, 'mapel_id' => $group['mata_pelajaran']->id]) }}" 
-                                              method="POST" 
-                                              onsubmit="return confirm('Hapus semua jadwal untuk mapel {{ $group['mata_pelajaran']->nama_mapel }}?')">
+                                              method="POST" class="inline" id="deleteGroupForm-{{ $group['mata_pelajaran']->id }}">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="text-red-500 hover:text-red-700">
+                                            <button type="button" class="text-red-500 hover:text-red-700" onclick="confirmDeleteGroup({{ $group['mata_pelajaran']->id }}, '{{ $group['mata_pelajaran']->nama_mapel }}')" title="Hapus">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
                                         </form>
@@ -87,4 +83,23 @@
         @endif
     </div>
 </div>
+
+<script>
+function confirmDeleteGroup(id, nama) {
+    Swal.fire({
+        title: 'Hapus Semua Jadwal?',
+        text: "Yakin ingin menghapus semua jadwal untuk mapel " + nama + "?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#6C9BCF',
+        confirmButtonText: 'Ya, hapus!',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById('deleteGroupForm-' + id).submit();
+        }
+    });
+}
+</script>
 @endsection

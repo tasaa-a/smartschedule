@@ -1,15 +1,15 @@
-@extends('layouts.app')
 
-@section('title', 'Data Guru')
 
-@section('content')
+<?php $__env->startSection('title', 'Data Guru'); ?>
+
+<?php $__env->startSection('content'); ?>
 <div class="bg-white rounded-2xl shadow-sm">
     <div class="p-6 border-b border-gray-100 flex justify-between items-center">
         <div>
             <h2 class="text-xl font-semibold text-gray-800">Data Guru</h2>
             <p class="text-sm text-gray-500">Kelola data guru yang mengajar</p>
         </div>
-        <a href="{{ route('admin.guru.create') }}" class="px-4 py-2 rounded-xl flex items-center gap-2 text-white transition" style="background: linear-gradient(135deg, #6C9BCF 0%, #8FC9A9 100%);">
+        <a href="<?php echo e(route('admin.guru.create')); ?>" class="px-4 py-2 rounded-xl flex items-center gap-2 text-white transition" style="background: linear-gradient(135deg, #6C9BCF 0%, #8FC9A9 100%);">
             <i class="fas fa-plus"></i>
             <span>Tambah Guru</span>
         </a>
@@ -28,35 +28,35 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($guru as $index => $item)
+                    <?php $__empty_1 = true; $__currentLoopData = $guru; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                     <tr class="border-b border-gray-100 hover:bg-gray-50 transition">
-                        <td class="py-3 px-4 text-gray-600">{{ $index + 1 }}</td>
-                        <td class="py-3 px-4 text-gray-700">{{ $item->nip }}</td>
-                        <td class="py-3 px-4 font-medium" style="color: #4A5568;">{{ $item->nama }}</td>
-                        <td class="py-3 px-4 text-gray-600">{{ $item->user->email ?? '-' }}</td>
+                        <td class="py-3 px-4 text-gray-600"><?php echo e($index + 1); ?></td>
+                        <td class="py-3 px-4 text-gray-700"><?php echo e($item->nip); ?></td>
+                        <td class="py-3 px-4 font-medium" style="color: #4A5568;"><?php echo e($item->nama); ?></td>
+                        <td class="py-3 px-4 text-gray-600"><?php echo e($item->user->email ?? '-'); ?></td>
                         <td class="py-3 px-4 text-center">
                             <div class="flex items-center justify-center gap-3">
-                                <a href="{{ route('admin.guru.edit', $item->id) }}" class="text-blue-500 hover:text-blue-700 transition" title="Edit">
+                                <a href="<?php echo e(route('admin.guru.edit', $item->id)); ?>" class="text-blue-500 hover:text-blue-700 transition" title="Edit">
                                     <i class="fas fa-edit text-lg"></i>
                                 </a>
-                                <form action="{{ route('admin.guru.destroy', $item->id) }}" method="POST" class="inline" id="deleteForm-{{ $item->id }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="button" class="text-red-500 hover:text-red-700 transition" onclick="confirmDelete({{ $item->id }}, '{{ $item->nama }}')" title="Hapus">
+                                <form action="<?php echo e(route('admin.guru.destroy', $item->id)); ?>" method="POST" class="inline" id="deleteForm-<?php echo e($item->id); ?>">
+                                    <?php echo csrf_field(); ?>
+                                    <?php echo method_field('DELETE'); ?>
+                                    <button type="button" class="text-red-500 hover:text-red-700 transition" onclick="confirmDelete(<?php echo e($item->id); ?>, '<?php echo e($item->nama); ?>')" title="Hapus">
                                         <i class="fas fa-trash-alt text-lg"></i>
                                     </button>
                                 </form>
                             </div>
                         </td>
                     </tr>
-                    @empty
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                     <tr>
                         <td colspan="5" class="py-12 text-center text-gray-500">
                             <i class="fas fa-chalkboard-user text-4xl mb-3 block opacity-50"></i>
                             Belum ada data guru. Silakan tambah guru baru.
                         </td>
                     </tr>
-                    @endforelse
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>
@@ -81,4 +81,5 @@ function confirmDelete(id, nama) {
     });
 }
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\smartschedule\resources\views/admin/guru/index.blade.php ENDPATH**/ ?>

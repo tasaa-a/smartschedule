@@ -21,8 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role',        // ← TAMBAHKAN role
-        'kelas_id',    // ← TAMBAHKAN kelas_id
+        'role',        
+        'kelas_id',    
         'nis',
     ];
 
@@ -46,29 +46,18 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    // ========== TAMBAHKAN METHOD DI BAWAH INI ==========
-
-    /**
-     * Relasi ke tabel guru (one-to-one)
-     * Seorang user (dengan role guru) memiliki satu data guru
-     */
     public function guru()
     {
         return $this->hasOne(Guru::class, 'user_id');
     }
 
-
-    /**
-     * Relasi ke tabel kelas (belongs-to)
-     * Seorang user (siswa) memiliki satu kelas
-     */
     public function kelas()
     {
         return $this->belongsTo(Kelas::class, 'kelas_id');
     }
 
     public function siswa()
-{
-    return $this->hasOne(Siswa::class);
-}
+    {
+        return $this->hasOne(Siswa::class);
+    }
 }

@@ -98,6 +98,8 @@ Route::get('/dashboard', [App\Http\Controllers\Admin\AdminDashboardController::c
     Route::get('/siswa/{id}/edit', [App\Http\Controllers\Admin\SiswaController::class, 'edit'])->name('admin.siswa.edit');
     Route::put('/siswa/{id}', [App\Http\Controllers\Admin\SiswaController::class, 'update'])->name('admin.siswa.update');
     Route::delete('/siswa/{id}', [App\Http\Controllers\Admin\SiswaController::class, 'destroy'])->name('admin.siswa.destroy');
+
+    
 });
 
     // ========== GURU ROUTES ==========
